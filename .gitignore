@@ -13,3 +13,5 @@ node_modules
 build
 .testmondata
 dist
+.out
+*.cache.json

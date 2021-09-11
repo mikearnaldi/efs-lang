@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "lib": ["ES2020"],
+    "target": "ES2018",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "typeRoots": ["./node_modules/@types", "./typings"],
+    "plugins": [{ "transform": "@effect-ts/tracing-plugin" }]
+  },
+  "references": [{ "path": "packages/efs-lang" }],
+  "include": []
+}

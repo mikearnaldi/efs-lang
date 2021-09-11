@@ -1,0 +1,16 @@
+{
+  "name": "efs-demo",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "node ../efs-lang/lib/efsc.js ./src ./lib"
+  },
+  "type": "module",
+  "dependencies": {
+    "efs-lang": "^0.0.0"
+  },
+  "exports": {
+    "./*": {
+      "default": "./lib/*.js"
+    }
+  }
+}

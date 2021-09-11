@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Clean App",
+      "type": "shell",
+      "command": "sh -c \"yarn clean\"",
+      "group": "build"
+    },
+    {
+      "label": "Watch",
+      "type": "shell",
+      "command": "sh -c \"yarn build -w\"",
+      "group": "build",
+      "isBackground": true,
+      "problemMatcher": ["$tsc-watch"]
+    }
+  ]
+}

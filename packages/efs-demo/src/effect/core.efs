@@ -1,0 +1,27 @@
+enum Effect[-Env, +Err, +Out] {
+  case Succeed[A](a: () => A) extends Effect[Unknown, Never, A]
+  
+  case Fail[E](e: () => E) extends Effect[Unknown, E, Never]
+  
+  case Access[R, A](r: R => A) extends Effect[R, Never, A]
+  
+  case Fold[R, E, A, R1, E1, A1, R2, E2, A2](
+    fa: Effect[R, E, A],
+    f: E => Effect[R1, E1, A1],
+    g: A => Effect[R2, E2, A2]
+  ) extends Effect[R & R1 & R2, E1 | E2, A1 | A2]
+}
+
+module Effect {
+  fn succeed[A](a: => A): Effect[Unknown, Never, A] = Effect.Succeed(e)
+  
+  fn fail[E](e: => E): Effect[Unknown, E, Never] = Effect.Fail(e)
+
+  fn access[R, A](r: R => A): Effect[R, Never, A] = Effect.Access(r)
+  
+  fn fold[R, E, A, R1, E1, A1, R2, E2, A2](
+    self: Effect[R, E, A],
+    f: E => Effect[R1, E1, A1],
+    g: A => Effect[R2, E2, A2]
+  ): Effect[R & R1 & R2, E1 | E2, A1 | A2] = Effect.Fold(fa, f, g)
+}

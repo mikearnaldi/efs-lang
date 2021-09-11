@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "paths": {
+      "efs-lang/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}

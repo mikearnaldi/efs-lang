@@ -1,0 +1,18 @@
+import "./core"
+
+module Effect {
+  fn chain[R, E, A, R1, E1, A2](
+    self: Effect[R, E, A],
+    f: A => Effect[R1, E1, A2]
+  ) = self.fold(fail, f)
+  
+  fn catchAll[R, E, A, R1, E1, A1](
+    self: Effect[R, E, A],
+    f: E => Effect[R1, E1, A1]
+  ) = self.fold(f, succeed)
+
+  fn map[R, E, A, A2](
+    self: Effect[R, E, A],
+    f: A => A2
+  ) = self.chain(_ |> f |> succeed)
+}

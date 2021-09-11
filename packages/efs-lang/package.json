@@ -1,0 +1,21 @@
+{
+  "name": "efs-lang",
+  "version": "0.0.0",
+  "scripts": {
+    "build": "tsc -b tsconfig.json",
+    "clean": "rm -rf lib && rm -rf tsconfig.tsbuildinfo"
+  },
+  "type": "module",
+  "exports": {
+    "./*": {
+      "default": "./lib/*.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "lib/*"
+      ]
+    }
+  }
+}
